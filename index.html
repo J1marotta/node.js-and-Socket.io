@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title> CssChat attempt</title>
+</head>
+
+<body>
+
+	<body>
+		<h1>Communication with socket.io!</h1>
+
+		<p><input type="button" value="poke the server" id="poke" /></p>
+
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+
+		// this sets up our socket.io
+			var socket = io.connect('http://localhost:8080');
+
+			// when you receive a 'message' send an alert
+			socket.on('message', function(message) {
+				console.log(message);
+			});
+
+			// set up a user save it as username
+			var username = prompt('What\'s your username?');
+			socket.emit('usernameMess', username);
+
+			// a dialog box is displayed when the server sends a message
+			socket.on('message', function(message) {
+				alert('The Server has said ' + message);
+			});
+
+
+			// use jquery to make the button emit a 'message'
+			$('#poke').click(function() {
+				socket.emit('message', 'BUTTON CLICK');
+			});
+		</script>
+	</body>
+
+</html>

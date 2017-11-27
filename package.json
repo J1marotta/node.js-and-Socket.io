@@ -1,0 +1,13 @@
+{
+  "name": "cssChat",
+  "version": "0.1.0",
+  "description": "A simple Real-time Chat with socket.io and css practice with node.js",
+  "main": "index.js",
+  "author": "James Marota",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2",
+    "jQuery": "^1.7.4",
+    "socket.io": "^2.0.4"
+  }
+}
